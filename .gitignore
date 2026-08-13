@@ -1,0 +1,12 @@
+# Kubernetes secrets
+kubernetes/secret.yaml
+
+# Terraform local state
+*.tfstate
+*.tfstate.*
+
+# Terraform working directory
+.terraform/
+
+# Environment files
+.env
