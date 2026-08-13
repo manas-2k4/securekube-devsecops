@@ -2,12 +2,19 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
-RUN pip install --no-cache-dir --upgrade pip setuptools wheel
+# Update OS packages and install current Python packaging tools
+RUN apt-get update \
+    && apt-get upgrade -y \
+    && rm -rf /var/lib/apt/lists/* \
+    && pip install --no-cache-dir --upgrade pip setuptools wheel
 
 COPY requirements.txt .
 
-RUN pip install --no-cache-dir -r requirements.txt
+# Install application dependencies
+RUN pip install --no-cache-dir -r requirements.txt \
+    && pip install --no-cache-dir --upgrade "msgpack>=1.2.1" "setuptools>=83.0.0"
 
+# Create non-root application user
 RUN useradd --create-home --shell /usr/sbin/nologin appuser
 
 COPY main.py .

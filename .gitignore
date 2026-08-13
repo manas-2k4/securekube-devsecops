@@ -8,5 +8,8 @@ kubernetes/secret.yaml
 # Terraform working directory
 .terraform/
 
+# Terraform variables containing environment-specific values
+terraform.tfvars
+
 # Environment files
 .env
