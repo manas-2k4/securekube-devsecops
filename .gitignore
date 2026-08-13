@@ -1,15 +1,34 @@
-# Kubernetes secrets
-kubernetes/secret.yaml
+@"
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+.checkov-venv/
 
-# Terraform local state
+# Terraform
+.terraform/
 *.tfstate
 *.tfstate.*
+*.tfplan
+crash.log
+crash.*.log
 
-# Terraform working directory
-.terraform/
+# Security scan outputs
+trivy.json
+trivy-*.json
 
-# Terraform variables containing environment-specific values
-terraform.tfvars
-
-# Environment files
+# Environment / secrets
 .env
+*.secret
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+"@ | Set-Content .gitignore
+kubernetes/secret.yaml
